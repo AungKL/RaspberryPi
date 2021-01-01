@@ -1,0 +1,14 @@
+$ sudo ufw status verbose
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), deny (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+1194/udp                   LIMIT IN    Anywhere
+22                         ALLOW IN    192.168.1.0/24
+1880                       ALLOW IN    192.168.1.0/24
+1194/udp (v6)              LIMIT IN    Anywhere (v6)
+
+Anywhere on eth0           ALLOW FWD   10.8.0.0/24 on tun0
