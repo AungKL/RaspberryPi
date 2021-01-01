@@ -1,0 +1,34 @@
+sudo ufw enable
+sudo ufw disable
+
+sudo ufw status verbose
+	youruser@yourcomputer:~$ sudo ufw status verbose
+	[sudo] password for youruser:
+	Status: active
+	Logging: on (low)
+	Default: deny (incoming), allow (outgoing)
+	New profiles: skip
+	youruser@yourcomputer:~$
+
+sudo ufw show raw
+	How can i check any exceptions in rules? 
+	<-- with this you can check of what is blocked
+
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+
+sudo ufw status numbered
+sudo ufw delete 1
+
+sudo ufw limit ssh
+
+Disable remote ping
+In order to disable ping (icmp) requests, 
+you need to edit /etc/ufw/before.rules and remove the following lines:
+# ok icmp codes
+-A ufw-before-input -p icmp --icmp-type destination-unreachable -j DROP
+-A ufw-before-input -p icmp --icmp-type source-quench -j DROP
+-A ufw-before-input -p icmp --icmp-type time-exceeded -j DROP
+-A ufw-before-input -p icmp --icmp-type parameter-problem -j DROP
+-A ufw-before-input -p icmp --icmp-type echo-request -j DROP
