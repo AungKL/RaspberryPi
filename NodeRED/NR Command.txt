@@ -1,0 +1,93 @@
+			Node Red Command List
+		----------------------------------
+*******************************************
+*   Node-red Installation                 *
+*******************************************
+Ref: https://nodered.org/docs/getting-started/raspberrypi		
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+cd ~/.node-red
+node-red-stop
+sudo npm rebuild
+sudo npm install node-red-dashboard
+
+
+cd ~/.node-red
+node-red-stop
+sudo npm install node-red-node-serialport    [ref: https://www.npmjs.com/package/node-red-node-serialport ]
+cd ~/.node-red/node_modules/node-red-node-serialport
+npm rebuild
+
+--------------------------------------------------------------------------------
+Ref: https://discourse.nodered.org/t/sqlite-doesn-t-work-after-update/1830/8
+cd ~/.node-red
+node-red-stop
+npm i --unsafe-perm node-red-node-sqlite   [ref: https://www.npmjs.com/package/node-red-node-sqlite ]
+Note: the install process requires a compile of native code. This can take 15-20 minutes on devices like a Raspberry Pi 
+please be prepared to wait a long time.
+If node.js is upgraded at any point you will need to rebuild the native part manually, for example.
+cd ~/.node-red
+npm rebuild
+--------------------------------------------------------------------------------
+
+cd ~/.node-red/node_modules/node-red-node-sqlite
+npm rebuild
+cd ~/.node-red
+cd ~/.node-red/node-modules
+npm i —unsafe-perm sqlite3
+npm install sqlite3
+
+
+*******************************************
+*   Node-red Start Stop Service           *
+*******************************************
+sudo systemctl enable nodered.service
+sudo systemctl disable nodered.service
+node-red-start
+node-red-stop
+node-red-log
+
+
+*******************************************
+*   Node-red Security                     *
+*******************************************
+- https://nodered.org/docs/security
+
+- https://www.npmjs.com/package/node-red-admin
+- Install this globally to make the node-red-admin command 
+  available on your path:
+
+- $ sudo npm install -g node-red-admin
+- $ node-red-admin hash-pw
+- Password:  ->
+- sudo nano $HOME/.node-red/settings.js
+To enable user authentication on the Editor and Admin API, 
+add the following to your settings.js file:
+------------------------------------------------------------
+    adminAuth: {
+        type: "credentials",
+        users: [{
+	
+- For httpNodeAuth:
+- $ node-red-admin hash-pw	
+	
+-------------------------------------------	    
+                 Uninstall NR
+-------------------------------------------	
+Ref: https://discourse.nodered.org/t/completely-remove-node-red/19821/7	  
+     https://discourse.nodered.org/t/how-to-uninstall-node-red/19135
+# node-red-stop
+# systemctl stop nodered
+# systemctl disable nodered
+# sudo npm -g remove node-red
+# sudo npm -g remove node-red-admin
+# rm -R ~/.node-red
+# rm -R ~/node_modules
+# sudo rm -R /usr/bin/node-red*
+# sudo rm -R /usr/lib/node_modules
+# sudo rm -rf /etc/logrotate.d/nodered
+# sudo rm -rf /lib/systemd/system/nodered.service
+# sudo rm -rf /var/log/nodered-install.log
+# sudo find / | grep node-red  /* Find leftover node-red files */
+
+# apt remove nodejs (Not used by any other solution)
+# rm -rf ~/.node-red (For user node-red was under)
