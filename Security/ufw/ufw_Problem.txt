@@ -1,0 +1,12 @@
+WARN: uid is 0 but '/lib' is owned by 1000
+
+Ref: https://raspberrypi.stackexchange.com/questions/87875/ubuntu-mate-ufw-error-warn-uid-is-0-but-lib-is-owned-by-1000-warn-lib-is
+
+I do not use Ubuntu on a Raspberry Pi but on Debian and on Raspbian the /lib directory has this modes:
+
+rpi ~$ ls -ld /lib
+drwxr-xr-x 11 root root 4096 Aug  7 22:34 /lib
+Ubuntu is a Debian derivate like Raspbian so it should have the same modes. You can correct it with this commands:
+
+rpi ~$ sudo chmod 755 /lib
+rpi ~$ sudo chown root:root /lib
