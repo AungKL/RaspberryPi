@@ -1,3 +1,6 @@
+*******************************************
+*   Installation of ufw                   *
+*******************************************
 sudo ufw enable
 sudo ufw disable
 
@@ -32,3 +35,4 @@ you need to edit /etc/ufw/before.rules and remove the following lines:
 -A ufw-before-input -p icmp --icmp-type time-exceeded -j DROP
 -A ufw-before-input -p icmp --icmp-type parameter-problem -j DROP
 -A ufw-before-input -p icmp --icmp-type echo-request -j DROP
+
