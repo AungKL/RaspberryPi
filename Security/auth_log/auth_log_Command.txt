@@ -1,0 +1,8 @@
+*****************************************************
+*      Command Related to auth.log file             * 
+*****************************************************
+
+date -r /var/log/auth.log
+cat /var/log/auth.log | grep "Accepted password"
+cat /var/log/auth.log | grep "Failed password"
+sudo truncate /var/log/auth.log --size 0
