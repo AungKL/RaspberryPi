@@ -3,13 +3,24 @@
 *******************************************
 sudo apt install ufw
 sudo ufw status verbose
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), deny (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+1194/udp                   LIMIT IN    Anywhere
+22                         ALLOW IN    192.168.1.0/24
+1880                       ALLOW IN    192.168.1.0/24
+1194/udp (v6)              LIMIT IN    Anywhere (v6)
 
 *******************************************
 *   Allow Lists of ufw                    *
 *******************************************
 sudo ufw allow from 192.168.1.0/24 to any port 22
 sudo ufw allow from 192.168.1.0/24 to any port 1880
-
+sudo ufw limit ssh/tcp
 
 Allow Subnets
 Ref: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-14-04#:~:text=When%20working%20with%20UFW%2C%20you,sudo%20ufw%20allow%20from%2015.15.
@@ -25,29 +36,24 @@ sudo ufw allow from 15.15.15.0/24
 sudo ufw enable
 sudo ufw disable
 
-sudo ufw status verbose
-	youruser@yourcomputer:~$ sudo ufw status verbose
-	[sudo] password for youruser:
-	Status: active
-	Logging: on (low)
-	Default: deny (incoming), allow (outgoing)
-	New profiles: skip
-	youruser@yourcomputer:~$
+
+*******************************************
+*   Delete Rule of ufw                    *
+*******************************************
+sudo ufw status numbered
+sudo ufw delete 1
+
+
 
 sudo ufw show raw
 	How can i check any exceptions in rules? 
 	<-- with this you can check of what is blocked
 
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
 
 
-sudo ufw status numbered
-sudo ufw delete 1
-
-sudo ufw limit ssh
-
-Disable remote ping
+*******************************************
+*   Disable remote ping                   *
+*******************************************
 In order to disable ping (icmp) requests, 
 you need to edit /etc/ufw/before.rules and remove the following lines:
 # ok icmp codes
