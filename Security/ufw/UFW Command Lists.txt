@@ -1,6 +1,27 @@
 *******************************************
 *   Installation of ufw                   *
 *******************************************
+sudo apt install ufw
+sudo ufw status verbose
+
+*******************************************
+*   Allow Lists of ufw                    *
+*******************************************
+sudo ufw allow from 192.168.1.0/24 to any port 22
+sudo ufw allow from 192.168.1.0/24 to any port 1880
+
+
+Allow Subnets
+Ref: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-14-04#:~:text=When%20working%20with%20UFW%2C%20you,sudo%20ufw%20allow%20from%2015.15.
+If you want to allow a subnet of IP addresses, you can do so using CIDR notation to 
+specify a netmask. For example, if you want to allow all of the IP addresses ranging 
+from 15.15.15.1 to 15.15.15.254 you could use this command:
+sudo ufw allow from 15.15.15.0/24
+
+
+*******************************************
+*   Start/Stop of ufw                     *
+*******************************************
 sudo ufw enable
 sudo ufw disable
 
