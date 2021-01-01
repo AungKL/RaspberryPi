@@ -1,0 +1,98 @@
+   NodeRED on Windows Installation Note
+-----------------------------------------
+- Download @ https://nodejs.org/en/download/
+- Install node-v10.16.0-x64.msi without Admin, but need to do with Admin later
+- Open "CMD" with Admin
+- [optional - change ArsClip to NodeRED for command copy/paste]
+- Check node js version
+  node --version && npm --version 
+  v10.16.0
+  6.9.0
+  
+- Set firewall to "Default" for Node RED installation  
+- Set drive C: and directory
+  C: 
+  CD\
+- Install Node RED and Dashboard
+  npm install -g --unsafe-perm node-red
+  CD C:\Users\Administrator\AppData\Roaming\npm OR CD %APPDATA%\npm
+  npm i node-red-dashboard 
+  
+- Change Directory and run Node RED
+  CD C:\Users\Administrator\AppData\Roaming\npm OR CD %APPDATA%\npm
+  node-red
+ 
+- Node RED settings.js location
+  [C:\Users\Administrator\.node-red\settings.js]
+ 
+- Run at  http://127.0.0.1:1880/
+- To quit Node RED, ctrl+c
+    
+- Install sqlite3 on Node-RED
+  * Extract sqlite3.exe from sqlite-tools-win32-x86-3250300.zip to D:\sqlite3	
+  * Add D:\sqlite3 to system path [echo %PATH%]
+  * From command line to check sqlite3 is properly installed	
+	C:\Users\Administrator\AppData\Roaming\npm>sqlite3
+	SQLite version 3.25.3 2018-11-05 20:37:38
+	Enter ".help" for usage hints.
+	Connected to a transient in-memory database.
+	Use ".open FILENAME" to reopen on a persistent database.
+	sqlite> .quit
+  * At Node-RED, Menu -> Manage Palette -> Install -> search for sqlite
+    then install node-red-node-sqlite
+	- All information of installation can be seen @ console command
+
+- SQLite3 Example folder @ 	
+  * D:\MCU_Doc\Raspberry Pi Document\Raspberry Pi Node_RED MQTT\_Node_RED_Example\sqlite3_Example
+  * D:\sqlite3
+  * D:\MCU_Soft\Raspberry Pi Software\NodeRED_Windows\SQLiteDatabaseBrowserPortable\SQLiteDatabaseBrowserPortable.exe
+  
+  
+  
+ -------------------------------------------------------------------
+ C:\WINDOWS\system32>cd\
+
+C:\>CD C:\Users\Administrator\AppData\Roaming\npm
+
+C:\Users\Administrator\AppData\Roaming\npm>node-red
+25 Nov 19:32:00 - [info]
+
+Welcome to Node-RED
+===================
+
+25 Nov 19:32:00 - [info] Node-RED version: v0.19.5
+25 Nov 19:32:00 - [info] Node.js  version: v10.13.0
+25 Nov 19:32:00 - [info] Windows_NT 10.0.15063 x64 LE
+25 Nov 19:32:00 - [info] Loading palette nodes
+25 Nov 19:32:01 - [warn] rpi-gpio : Raspberry Pi specific node set inactive
+25 Nov 19:32:01 - [warn] ------------------------------------------------------
+25 Nov 19:32:01 - [warn] [node-red/tail] Not currently supported on Windows.
+25 Nov 19:32:01 - [warn] ------------------------------------------------------
+25 Nov 19:32:01 - [info] Settings file  : C:\Users\Administrator\.node-red\settings.js
+25 Nov 19:32:01 - [info] Context store  : 'default' [module=memory]
+25 Nov 19:32:01 - [info] User directory : C:\Users\Administrator\.node-red
+25 Nov 19:32:01 - [warn] Projects disabled : editorTheme.projects.enabled=false
+25 Nov 19:32:01 - [info] Flows file     : C:\Users\Administrator\.node-red\flows_Arduino-PC.json
+25 Nov 19:32:01 - [info] Creating new flow file
+25 Nov 19:32:01 - [warn]
+
+---------------------------------------------------------------------
+Your flow credentials file is encrypted using a system-generated key.
+
+If the system-generated key is lost for any reason, your credentials
+file will not be recoverable, you will have to delete it and re-enter
+your credentials.
+
+You should set your own key using the 'credentialSecret' option in
+your settings file. Node-RED will then re-encrypt your credentials
+file using your chosen key the next time you deploy a change.
+---------------------------------------------------------------------
+
+25 Nov 19:32:01 - [info] Starting flows
+25 Nov 19:32:01 - [info] Started flows
+25 Nov 19:32:01 - [info] Server now running at http://127.0.0.1:1880/
+25 Nov 19:32:05 - [info] Stopping flows
+25 Nov 19:32:05 - [info] Stopped flows
+Terminate batch job (Y/N)?
+
+   
