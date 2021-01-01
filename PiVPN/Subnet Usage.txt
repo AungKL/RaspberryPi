@@ -1,0 +1,11 @@
+Routing different subnets
+Ref: https://forums.openvpn.net/viewtopic.php?p=68471#p68471
+
+NOTE: your local LAN uses the extremely common subnet address 192.168.0.x or 192.168.1.x. 
+Be aware that this might create routing conflicts if you connect to the VPN server from public 
+locations such as internet cafes that use the same subnet.
+
+
+Never use 192.168.0.0/24 or 192.168.1.0/24 (or other common subnets) for your OpenVPN Server LAN :!:
+You are advised to change your server LAN to a more unique RFC1918 compliant subnet.
+For example: 192.168.143.0/24
