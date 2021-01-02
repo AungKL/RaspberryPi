@@ -11,5 +11,5 @@ sudo systemctl disable openvpn    Disable autostart
 
 ref: https://github.com/pivpn/pivpn/issues/393
 sudo nano /etc/openvpn/easy-rsa/pki/Default.txt			change public ip
-
+sudo truncate /var/log/openvpn.log --size 0         clear content of openvpn.log
 
