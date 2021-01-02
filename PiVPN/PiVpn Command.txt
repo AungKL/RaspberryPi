@@ -1,6 +1,6 @@
-    PiVPN Command List
-   -------------------- 
-
+******************************** 
+*   PiVPN Command List         *
+********************************
 pivpn help                        pivpn help command
 
 sudo systemctl stop openvpn       Stop the server 
@@ -8,3 +8,6 @@ sudo systemctl start openvpn      Start the server
 sudo systemctl restart openvpn    Restart the server			
 sudo systemctl enable openvpn     Autostart the server at boot
 sudo systemctl disable openvpn    Disable autostart	
+
+
+sudo nano /etc/openvpn/easy-rsa/pki/Default.txt			change public ip
