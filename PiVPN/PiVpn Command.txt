@@ -9,5 +9,7 @@ sudo systemctl restart openvpn    Restart the server
 sudo systemctl enable openvpn     Autostart the server at boot
 sudo systemctl disable openvpn    Disable autostart	
 
-
+ref: https://github.com/pivpn/pivpn/issues/393
 sudo nano /etc/openvpn/easy-rsa/pki/Default.txt			change public ip
+
+
